@@ -2,7 +2,6 @@ import pandas as pd
 from dash import dcc, html, Dash, Input, Output
 import plotly.express as px
 
-
 from config import * 
 
 df=pd.read_csv(current_file)
@@ -15,6 +14,8 @@ house_type_dropdown=list(set(df['type']))
 #basic layout
 app.layout = html.Div(children=[
     html.H1(children='Manchester House Price Dashboard'),
+
+    html.Label(['House Type'],style={'font-weight': 'bold', "text-align": "center"}),
     dcc.Dropdown(id='house_type_dropdown'
         ,options=[
         {'label':'S','value':'S'},
@@ -23,8 +24,17 @@ app.layout = html.Div(children=[
         {'label':'O','value':'O'},
         {'label':'F','value':'F'},
         ],
-        value='D'
+        value='D',
+        #multi=True
         ),
+    html.Label(['Lease Type'],style={'font-weight': 'bold', "text-align": "center"}),
+    dcc.Dropdown(id='lease_dropdown'
+    ,options=[
+        {'label':'F','value':'F'},
+        {'label':'L','value':'L'}
+    ],
+    value='F'
+    ),
     dcc.Graph(
         id='house_price_uk_graph'
     ) 
@@ -37,12 +47,19 @@ def create_figure(df):
     )
     return fig
 
-@app.callback(Output('house_price_uk_graph','figure'),
-            [Input('house_type_dropdown','value')])
-def update_figure(selected_value):
-    df_out=df[df['type']==selected_value]
+@app.callback(
+    Output('house_price_uk_graph','figure'),
+            [
+            Input('house_type_dropdown','value'),
+            Input('lease_dropdown','value')
+            ])
+def update_figure(house_type,lease):
+
+    df_out=df[df['lease']==lease]
+    df_out=df_out[df_out['type']==house_type]
     fig=create_figure(df_out)
     return fig
+
 
     
 if __name__ =='__main__':
