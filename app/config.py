@@ -6,6 +6,6 @@ postcodes=['M20','M21','M33','SK1','SK12','SK15','SK2','SK3'
 
 #data_out_filepath="C:\\Users\\richa\\Documents\\DataScience\\House Price"
 
-current_file="processed2022-07-29.csv"
+current_file="data/processed2022-07-29.csv"
 
 min_year=1990
