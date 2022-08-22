@@ -1,12 +1,16 @@
 import pandas as pd
 from dash import dcc, html, Dash, Input, Output
 import plotly.express as px
+from flask import Flask
 
-from config import * 
+from config import current_file 
+
+server = Flask(__name__)
+#app=Dash(server=server)
+app=Dash(__name__)
+app.title='Dashboard'
 
 df=pd.read_csv(current_file)
-
-app=Dash(__name__)
 
 #get dropdowns
 house_type_dropdown=list(set(df['type']))
@@ -63,4 +67,5 @@ def update_figure(house_type,lease):
 
     
 if __name__ =='__main__':
-    app.run_server(debug=True)
+    #app.run_server(host='127.0.0.1', port=8050,debug=True)
+    app.run_server()
