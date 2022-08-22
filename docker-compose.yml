@@ -6,7 +6,10 @@ services:
      container_name: python_dashboard
      restart: always
      ports:
-       - 8050:8050
+       - "8050:8050"
+     volumes:
+       - /app
+       - .:/app
      networks:
        - network 
     

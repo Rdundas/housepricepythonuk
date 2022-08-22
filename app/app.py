@@ -3,11 +3,11 @@ from dash import dcc, html, Dash, Input, Output
 import plotly.express as px
 from flask import Flask
 
-from config import current_file 
+from app.config import current_file 
 
 server = Flask(__name__)
-#app=Dash(server=server)
-app=Dash(__name__)
+app=Dash(server=server)
+#app=Dash(__name__)
 app.title='Dashboard'
 
 df=pd.read_csv(current_file)
