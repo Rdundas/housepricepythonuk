@@ -3,11 +3,13 @@ import unittest
 import pandas as pd
 from datetime import datetime
 #Contains unit tests of code
-from app.config import postcodes
-from app.config import test_filepath_in
-from app.config import test_filepath_out
+
 from data.data_loading import load_initial_data
 from pandas.testing import assert_frame_equal
+
+#Test filepaths
+test_filepath_in='tests/test_data_in.csv'
+test_filepath_out='tests/test_data_out.csv'
 
 
 class TestSum(unittest.TestCase):
