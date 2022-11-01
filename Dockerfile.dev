@@ -12,7 +12,7 @@ WORKDIR '/home/python/'
 #RUN yum update -y
 #RUN yum groupinstall 'Development Tools' -y
 #copy requirements file
-COPY app/requirements.txt ./
+COPY requirements.txt ./
 #Step to update pip
 RUN pip3 install --upgrade pip setuptools --user --no-cache-dir
 #install
