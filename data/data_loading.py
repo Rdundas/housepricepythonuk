@@ -2,10 +2,6 @@ import pandas as pd
 from datetime import datetime
 
 
-def print_message(message):
-    print(message)
-
-
 def load_initial_data(filepath,min_year=1900,postcodes=None):
     '''
     'loads inital data, takes a filepath and minimum year
@@ -13,17 +9,21 @@ def load_initial_data(filepath,min_year=1900,postcodes=None):
     '''
     i=0
     data_columns=['ID','value','date','zip_code','type','commercial','lease',
-            'name_number']
+            'name_number','flat','road']
     dict={}
     for chunk in pd.read_csv(filepath,header=None,chunksize=10000):
-
+        
         #get first eight rows
-        df=chunk.iloc[:,0:8]
+        df=chunk.iloc[:,0:10]
         df.columns=data_columns
         #add year/month
         df['year']=df['date'].str[0:4].astype('int16')
         df['month']=df['date'].str[5:7].astype('int8')
+        df['address']=df['flat'].fillna('') +' '+df['name_number'].fillna('')+' ' + df['road'].fillna('')
+        df['address']=df['address'].str.lower()
+        
         df['postcode_area']=df['zip_code'].str.split(' ',expand=True)[0]
+        df['postcode_sector']=df['postcode_area']+' '+df['zip_code'].str.split(' ',expand=True)[1].str[0]
         #drop years don't want
         df=df[df['year']>=min_year]
         #only keep postcodes
@@ -34,5 +34,8 @@ def load_initial_data(filepath,min_year=1900,postcodes=None):
             dict['chunk'+str(i)]=df
         i=i+1
     return pd.concat(dict.values(), ignore_index=True)
+
+
+
 
 
