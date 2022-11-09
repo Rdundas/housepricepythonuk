@@ -31,8 +31,8 @@ jobs:
           docker build \
             --cache-from ${{ env.IMAGE }}:latest \
             --tag ${{ env.IMAGE }}:latest \
-            --file ./Dockerfile \
-            "./project"
+            --file ./Dockerfile 
+            # \"./project"
       - name: Push image
         run: |
          # docker compose push
