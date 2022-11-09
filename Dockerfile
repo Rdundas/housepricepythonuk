@@ -22,5 +22,5 @@ RUN pip3 install -r requirements.txt
 #copy everything else, technically don't need with docker-compose-dev but suggest leave in
 COPY ./ ./
 #run command
-CMD ["python","app/app.py"]
-#CMD gunicorn --bind 0.0.0.0:8050 app.app:server
+#CMD ["python","app/app.py"]
+CMD gunicorn --bind 0.0.0.0:8050 app.app:server
