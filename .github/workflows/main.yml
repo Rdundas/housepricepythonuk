@@ -23,7 +23,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Pull image
         run: |
-          docker pull ${{ env.IMAGE }}:latest || true
+          docker compose pull
+          #docker pull ${{ env.IMAGE }}:latest || true
       - name: Build Image
         run: |
           docker compose build
@@ -34,4 +35,5 @@ jobs:
          #   "./project"
       - name: Push image
         run: |
-          docker push ${{ env.IMAGE }}:latest
+         docker compose push
+          # docker push ${{ env.IMAGE }}:latest
