@@ -4,7 +4,7 @@ FROM python:latest
 LABEL maintainer "Richard Dundas"
 
 #expose port
-#EXPOSE 80
+EXPOSE 80
 
 #set working directory as app
 RUN mkdir -p /home/python/
