@@ -125,7 +125,7 @@ def update_figure(house_type,lease,postcode_area_type,postcode_area):
     fig=create_figure(df_out,postcode_area_type)
     return fig
 
-#Possibly need to remove to run in Prod
+#Possibly need to remove to run in Prod, but current Dev file has volumes working correctly
 if __name__ =='__main__':
     #changed from 127.0.0.1
    app.run_server(host='0.0.0.0', port=8050,debug=True)
