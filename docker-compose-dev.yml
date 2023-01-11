@@ -4,25 +4,17 @@ services:
      image: housepricepythonuk:dev
      build: 
        context: .
-       dockerfile: Dockerfile.dev
-     container_name: python_dashboard_dev
-     restart: on-failure:1
+       dockerfile: Dockerfile.dev #differs from main
+     container_name: python_dashboard_dev #differs from main
+     restart: on-failure:1 #differs from main
      ports:
        - "8050:8050"
-     volumes:
-      # current, loads but doesn't properly update
+     volumes: #differs from main
+      # changes to files in app folder work correctly
        - "./app:/home/python/app/"
-      # attempt 1, no such file app/processed.csv 
-      # - "./app:/home/python/app"
-      # attempt 2, loads but doesn't properly update
-      # - "./:/home/python/app"
-      # attempt 3, failed to find attribute server in app.app
-      # - "./:/home/python/app/app"
-      # attempt 4, based on front-end, again loads but doesn't work
-      # - "/home/python/app/app:/home/python/app/app"
-     networks:
-       - network 
+     #networks: #differs from main do we need this line and below?
+     #  - network #differs from main#differs from main
     
-networks:
-   network:
-     driver: bridge
+#networks:
+   #network:
+     #driver: bridge
