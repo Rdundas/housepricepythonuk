@@ -1,5 +1,5 @@
-#specify image
-FROM python:latest
+#specify image, this is important as need to install catboost
+FROM python:3.10.9-bullseye
 
 LABEL maintainer "Richard Dundas"
 
