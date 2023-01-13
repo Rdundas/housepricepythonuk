@@ -1,5 +1,5 @@
 #specify image
-FROM python:latest
+FROM python:3.10.9-bullseye
 
 LABEL maintainer "Richard Dundas"
 
