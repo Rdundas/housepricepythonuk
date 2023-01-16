@@ -10,7 +10,7 @@ A python virtual environment and jupyter notebook, that can be created in the di
 
 A dash dashboard (app.py) that has an ML model embedded into it (model.pkl/model.py). 
 
-A FASTApi end point (api.py).
+A FASTApi end point (api.py). This is basic but shows how to set a model up as an api using the framework.
 
 Unit testng via pytest split by module (test_data_loading.py and test_model.py), with data in/out added.
 
