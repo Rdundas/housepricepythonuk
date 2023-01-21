@@ -8,7 +8,10 @@ import dash_bootstrap_components as dbc
 from dash.exceptions import PreventUpdate
 
 #if want to run locally or via docker, first row needed via docker
-from app.config import current_file,model_output_path
+try:
+    from app.config import current_file,model_output_path
+except:
+    from config import current_file,model_output_path
 
 #Load Model
 with open(model_output_path, 'rb') as target_file:
@@ -214,7 +217,7 @@ def update_prediction(n_clicks,model_zip_code,model_house_type,model_commercial,
 
 if __name__ =='__main__':
     #changed from 127.0.0.1
-   app.run_server(host='0.0.0.0', port=8050,debug=True)
+   app.run_server(host='0.0.0.0', port=80,debug=True)
 
 
 

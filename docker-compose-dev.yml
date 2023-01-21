@@ -8,7 +8,7 @@ services:
      container_name: python_dashboard_dev #differs from main
      restart: on-failure:1 #differs from main
      ports:
-       - "8050:8050"
+       - "80:80"
      volumes: #differs from main
       # changes to files in app folder work correctly
        - "./app:/home/python/app/"
@@ -17,4 +17,4 @@ services:
     
 #networks:
    #network:
-     #driver: bridge
+     #driver: bridgeHal
