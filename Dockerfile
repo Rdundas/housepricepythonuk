@@ -23,4 +23,4 @@ RUN pip3 install -r requirements.txt
 COPY ./ ./
 #run command
 #CMD ["python","app/app.py"]
-CMD gunicorn --bind 0.0.0.0:8050 app.app:server
+CMD gunicorn --bind 0.0.0.0:80 app.app:server
