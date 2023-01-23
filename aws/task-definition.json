@@ -69,7 +69,7 @@
       "EC2",
       "FARGATE"
     ],
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:128211832388:task-definition/fargate-first-task-definition:2",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:128211832388:task-definition/fargate-first-task-definition",
     "family": "fargate-first-task-definition",
     "requiresAttributes": [
       {
